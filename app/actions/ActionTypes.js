@@ -1,0 +1,3 @@
+export const GET_LOGIN_STATE = 'GET_LOGIN_STATE';
+export const CHANGE_LOGIN_STATE = 'CHANGE_LOGIN_STATE';
+
