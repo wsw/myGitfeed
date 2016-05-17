@@ -1,7 +1,7 @@
 {
-  "name": "reactNativeDemo",
+  "name": "wsw",
   "version": "0.0.1",
-  "private": true,
+  "private": false,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start"
   },
@@ -12,6 +12,7 @@
     "react-native-scrollable-tab-view": "^0.4.2",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
-    "redux-thunk": "^2.0.1"
+    "redux-thunk": "^2.0.1",
+    "react-native-store": "^0.4.1"
   }
 }
