@@ -34,8 +34,6 @@ class TabBar extends React.Component {
         const tabName = name.tabName;
         const iconName = name.iconName;
         
-        console.log(this.selectedTabIcons);
-        
         return (
             <TouchableOpacity 
                 key={tabName}

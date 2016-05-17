@@ -1,28 +1,29 @@
 import * as types from './ActionTypes';
+import {AsyncStorage} from 'react-native';
 
 const LOGIN_STATE = 'loginState';
 
 AsyncStorage.getItem(LOGIN_STATE).then((value) => {
     if (value == null) {
-        AsyncStorage.setItem(LOGIN_STATE, {state: 0});
+        AsyncStorage.setItem(LOGIN_STATE, types.LOGIN_STATE_LIST.ONBOARD);
     }
 }).catch(error => {}).done();
 
-export function changeLoginState(value) {
+function changeLoginState(value) {
     return {
         type: types.CHANGE_LOGIN_STATE,
-        login: value
+        state: value
     }
 }
 
 function getLoginState(value) {
     return {
-        type: tpes.GET_LOGIN_STATE,
-        login: value
+        type: types.GET_LOGIN_STATE,
+        state: value
     }
 }
 
-function getLoginStateAysnc(params) {
+function getLoginStateAysnc() {
     return (dispatch, getState) => {
         AsyncStorage.getItem(LOGIN_STATE).then(value => {
             dispatch(getLoginState(value));
@@ -37,3 +38,5 @@ function changeLoginStateAysnc(value) {
         }).catch(error => {}).done();
     }
 }
+
+export {getLoginStateAysnc, changeLoginStateAysnc};
