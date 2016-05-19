@@ -4,9 +4,13 @@ import {Navigator, View} from 'react-native';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as loginActions from './actions/login';
-import * as types from './actions/ActionTypes';
 import Onboard from './components/Onboard';
 import Loading from './common/loading';
+import {
+    GET_LOGIN_STATE,
+    LOGIN_STATE_LIST,
+    CHANGE_LOGIN_STATE
+} from './actions/ActionTypes';
 
 class Index extends Component {
     constructor() {
@@ -22,11 +26,11 @@ class Index extends Component {
         const {login} = this.props;
         
         switch (login.state) {
-            case types.LOGIN_STATE_LIST.PEDDING:
+            case LOGIN_STATE_LIST.PEDDING:
                 return <Loading />
-            case types.LOGIN_STATE_LIST.ONBOARD:
-                return <RootTab />
-            case types.LOGIN_STATE_LIST.UNONBOARD:
+            case LOGIN_STATE_LIST.ONBOARD:
+                return <RootTab username={login.username} />
+            case LOGIN_STATE_LIST.UNONBOARD:
                 return <Onboard changeLoginState={this.changeState.bind(this)}/>;
             default :
                 return <Loading />

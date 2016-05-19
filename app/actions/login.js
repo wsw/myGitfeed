@@ -9,36 +9,37 @@ const LOGIN_STATE = 'loginState';
 
 AsyncStorage.getItem(LOGIN_STATE).then((value) => {
     if (value == null) {
-        AsyncStorage.setItem(LOGIN_STATE, LOGIN_STATE_LIST.ONBOARD);
+        let login = {state: LOGIN_STATE_LIST.UNONBOARD, username: ''};
+        AsyncStorage.setItem(LOGIN_STATE, JSON.stringify(login));
     }
 }).catch(error => {}).done();
 
-function changeLoginState(value) {
+function changeLoginState(value, login) {
     return {
         type: CHANGE_LOGIN_STATE,
-        state: value
+        state: login.value,
+        username: login.username
     }
 }
 
-function getLoginState(value) {
+function getLoginState() {
     return {
-        type: GET_LOGIN_STATE,
-        state: value
+        type: GET_LOGIN_STATE
     }
 }
 
 function getLoginStateAysnc() {
     return (dispatch, getState) => {
         AsyncStorage.getItem(LOGIN_STATE).then(value => {
-            dispatch(getLoginState(value));
+            dispatch(getLoginState(JSON.parse(value)));
         }).catch(error => {}).done();
     }
 }
 
-function changeLoginStateAysnc(value) {
+function changeLoginStateAysnc(login) {
     return (dispatch, getState) => {
-        AsyncStorage.setItem(LOGIN_STATE, value).then(() => {
-            dispatch(changeLoginState(value));
+        AsyncStorage.setItem(LOGIN_STATE, JSON.stringify(login)).then(() => {
+            dispatch(changeLoginState(login));
         }).catch(error => {}).done();
     }
 }

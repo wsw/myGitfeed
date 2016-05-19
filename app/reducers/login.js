@@ -1,15 +1,24 @@
-import * as types from '../actions/ActionTypes';
+import {
+    LOGIN_STATE_LIST,
+    GET_LOGIN_STATE,
+    CHANGE_LOGIN_STATE
+} from '../actions/ActionTypes';
 import {asyncStorage} from 'react-native';
 
 const loginState = {
-    state: types.LOGIN_STATE_LIST.PEDDING
+    state: LOGIN_STATE_LIST.PEDDING,
+    username: ''
 }
 
 export default function login(state = loginState, action) {
     switch (action.type) {
-        case types.GET_LOGIN_STATE: 
-        case types.CHANGE_LOGIN_STATE:
-           return Object.assign({}, state, {state: action.state});
+        case GET_LOGIN_STATE: 
+            return state;
+        case CHANGE_LOGIN_STATE:
+           return Object.assign({}, state, {
+               state: action.state,
+               username: action.username
+            });
         default:
             return state;
     }
