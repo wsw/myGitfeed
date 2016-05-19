@@ -13,7 +13,6 @@ const loginState = {
 export default function login(state = loginState, action) {
     switch (action.type) {
         case GET_LOGIN_STATE: 
-            return state;
         case CHANGE_LOGIN_STATE:
            return Object.assign({}, state, {
                state: action.state,

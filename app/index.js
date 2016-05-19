@@ -25,6 +25,8 @@ class Index extends Component {
     render() {
         const {login} = this.props;
         
+        console.log(login)
+        
         switch (login.state) {
             case LOGIN_STATE_LIST.PEDDING:
                 return <Loading />
