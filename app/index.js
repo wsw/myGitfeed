@@ -39,12 +39,8 @@ class Index extends Component {
     }
 }
 
-function mapStateToProps(state) {
+export default connect((state) => {
     return {login: state.login};
-}
-
-function mapDispatchToProps(dispatch) {
+}, (dispatch) => {
     return bindActionCreators(loginActions, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Index);
+})(Index);
