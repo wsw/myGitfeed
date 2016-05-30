@@ -35,9 +35,7 @@ class Onboard extends React.Component {
         }, 3000);
     }
     onUserNameChange(text) {
-        this.setState({
-            username: text
-        });
+        this.setState({username: text});
     }
     render() {
         return (
@@ -53,7 +51,6 @@ class Onboard extends React.Component {
                             style={styles.textInput}
                             returnKeyType={'done'}
                             onChangeText={this.onUserNameChange.bind(this)}
-                            //onSubmitEditing={this.submitOnboard}
                             placeholder={'Github username not email'}
                         />
                         <TouchableHighlight
